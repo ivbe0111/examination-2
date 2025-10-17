@@ -14,7 +14,8 @@ public class Member {
     ArrayList<Member> memberList = new ArrayList<>();
     FileOperations fileOperations = new FileOperations();
 
-    public Member(){}
+    public Member() {
+    }
 
     public Member(String name, String address,
                   String email, String personalNumber,
@@ -27,6 +28,18 @@ public class Member {
         this.latestPayment = latestPayment;
         this.memberType = memberType;
     }
+
+    public String getSubscriptionStatus(Member member) {
+        LocalDate expirationDateForSubscription = LocalDate.now().minusYears(1);
+        if (member == null) {
+            return Subscriber.NONEXISTING.getDescription();
+        } else if (member.getLatestPayment().isBefore(expirationDateForSubscription)) {
+            return Subscriber.EXPIRED.getDescription();
+        } else {
+            return Subscriber.ACTIVE.getDescription();
+        }
+    }
+
 
     public Member findMemberByName(String name) {
         for (Member member : memberList) {
@@ -46,8 +59,8 @@ public class Member {
         return null;
     }
 
-    public ArrayList<Member> createMemberArrayListFromFile(ArrayList<String> memberListUnfiltered){
-        for(String member : memberListUnfiltered){
+    public ArrayList<Member> createMemberArrayListFromFile(ArrayList<String> memberListUnfiltered) {
+        for (String member : memberListUnfiltered) {
             memberList.add(new Member(fileOperations.getNameFromStringArrayList(member),
                     fileOperations.getAdressFromStringArrayList(member),
                     fileOperations.getEmailFromStringArrayList(member),
@@ -115,7 +128,7 @@ public class Member {
         this.memberType = memberType;
     }
 
-    public Member(String name){
+    public Member(String name) {
         this.name = name;
     }
 }
