@@ -21,4 +21,6 @@ class VisitTest {
         assertNotEquals(testVisit.getVisitTime().toString(), visit.formatVisitTime(testVisit.getVisitTime()));
         assertNotEquals("17-10-2025 14:27", visit.formatVisitTime(testVisit.getVisitTime()));
     }
+
+
 }

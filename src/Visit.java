@@ -1,11 +1,14 @@
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 public class Visit {
 
     private String memberName;
     private String memberPersonalNumber;
     private LocalDateTime visitTime;
+    private ArrayList<Visit> visits = new ArrayList<>();
+
 
     public Visit() {
     }
@@ -14,6 +17,10 @@ public class Visit {
         this.memberName = memberName;
         this.memberPersonalNumber = memberPersonalNumber;
         this.visitTime = visitTime;
+    }
+
+    public void addVisitToVisitsArrayList(){
+        visits.add(new Visit(memberName, memberPersonalNumber, visitTime));
     }
 
     public String formatVisitTime(LocalDateTime visitTime) {
@@ -32,6 +39,14 @@ public class Visit {
 
     public String getMemberPersonalNumber() {
         return memberPersonalNumber;
+    }
+
+    public ArrayList<Visit> getVisits() {
+        return visits;
+    }
+
+    public void setVisits(ArrayList<Visit> visits) {
+        this.visits = visits;
     }
 
     public void setMemberPersonalNumber(String memberPersonalNumber) {
