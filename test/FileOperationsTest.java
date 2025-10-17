@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -32,8 +33,6 @@ class FileOperationsTest {
         assertThrows(FileNotFoundException.class, () -> fileOperations.readFromFileAddToStringArrayListTest(Paths.get("src/.txt")));
     }
 
-
-
     @Test
     void getNameFromStringArrayListTest() {
         String testLine = memberListUnfilteredForTest.getFirst();
@@ -56,6 +55,25 @@ class FileOperationsTest {
         String lastLine = memberListUnfilteredForTest.getLast();
         assertEquals("fredde@fakemail.se", fileOperations.getEmailFromStringArrayList(testLine));
         assertEquals("jacke@fakemail.com", fileOperations.getEmailFromStringArrayList(lastLine));
+    }
+
+    @Test
+    void getPersonalnumberFromStringArrayListTest() {
+        String testLine = memberListUnfilteredForTest.getFirst();
+        String lastLine = memberListUnfilteredForTest.getLast();
+        assertEquals("851020-6728", fileOperations.getPersonalnumberFromStringArrayList(testLine));
+        assertEquals("000718-8949", fileOperations.getPersonalnumberFromStringArrayList(lastLine));
+    }
+
+    @Test
+    void getJoinDateFromStringArrayListTest() {
+        String testLine = memberListUnfilteredForTest.getFirst();
+        String lastLine = memberListUnfilteredForTest.getLast();
+        LocalDate expectedDateTestLine = LocalDate.of(2019,12,30);
+        LocalDate expectedDateLastLine = LocalDate.of(2020,7,10);
+
+        assertEquals(expectedDateTestLine, fileOperations.getJoinDateFromStringArrayList(testLine));
+        assertEquals(expectedDateLastLine, fileOperations.getJoinDateFromStringArrayList(lastLine));
     }
 
     @Test

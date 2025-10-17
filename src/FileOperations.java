@@ -3,6 +3,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -51,6 +52,26 @@ public class FileOperations {
         sc.next(); //Skips name
         sc.next(); //Skips adress
         return sc.next();
+    }
+    public String getPersonalnumberFromStringArrayList(String line){
+        Scanner sc = new Scanner(line);
+        sc.useDelimiter(";");
+        //Skips name, adress & email
+        for(int i = 0; i < 3; i++){
+            sc.next();
+        }
+        return sc.next();
+    }
+    public LocalDate getJoinDateFromStringArrayList(String line){
+        Scanner sc = new Scanner(line);
+        sc.useDelimiter(";");
+        //Skips name, adress, email, personaNumber
+        for(int i = 0; i < 4; i++){
+            sc.next();
+        }
+        LocalDate dateToReturn = LocalDate.parse(sc.next());
+        IO.println(dateToReturn);
+        return dateToReturn;
     }
 
 
