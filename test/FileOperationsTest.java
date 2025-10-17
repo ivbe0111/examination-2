@@ -75,6 +75,24 @@ class FileOperationsTest {
         assertEquals(expectedDateTestLine, fileOperations.getJoinDateFromStringArrayList(testLine));
         assertEquals(expectedDateLastLine, fileOperations.getJoinDateFromStringArrayList(lastLine));
     }
+    @Test
+    void getLastPaymentFromStringArrayListTest() {
+        String testLine = memberListUnfilteredForTest.getFirst();
+        String lastLine = memberListUnfilteredForTest.getLast();
+        LocalDate expectedDateTestLine = LocalDate.of(2021,12,30);
+        LocalDate expectedDateLastLine = LocalDate.of(2022,7,10);
+
+        assertEquals(expectedDateTestLine, fileOperations.getLastPaymentFromStringArrayList(testLine));
+        assertEquals(expectedDateLastLine, fileOperations.getLastPaymentFromStringArrayList(lastLine));
+    }
+    @Test
+    void getMemberTypeFromStringArrayListTest() {
+        String testLine = memberListUnfilteredForTest.getFirst();
+        String lastLine = memberListUnfilteredForTest.getLast();
+
+        assertEquals(MemberType.PLATINA, fileOperations.getMemberTypeFromStringArrayList(testLine));
+        assertEquals(MemberType.STANDARD, fileOperations.getMemberTypeFromStringArrayList(lastLine));
+    }
 
     @Test
     void writeToFileTest() {

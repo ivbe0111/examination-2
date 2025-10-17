@@ -69,9 +69,31 @@ public class FileOperations {
         for(int i = 0; i < 4; i++){
             sc.next();
         }
-        LocalDate dateToReturn = LocalDate.parse(sc.next());
-        IO.println(dateToReturn);
-        return dateToReturn;
+         return LocalDate.parse(sc.next());
+    }
+    public LocalDate getLastPaymentFromStringArrayList(String line){
+        Scanner sc = new Scanner(line);
+        sc.useDelimiter(";");
+        //Skips name, adress, email, personaNumber, joindate
+        for(int i = 0; i < 5; i++){
+            sc.next();
+        }
+        return LocalDate.parse(sc.next());
+    }
+    public MemberType getMemberTypeFromStringArrayList(String line) {
+        Scanner sc = new Scanner(line);
+        sc.useDelimiter(";");
+        //Skips name, adress, email, personaNumber, joindate
+        for (int i = 0; i < 6; i++) {
+            sc.next();
+        }
+        String memberType = sc.next();
+        for (MemberType mType : MemberType.values()) {
+            if (mType.getDescription().equals(memberType)) {
+                return mType;
+            }
+        }
+        return null;
     }
 
 
