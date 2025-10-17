@@ -11,8 +11,8 @@ public class FileOperations {
 
     public FileOperations(){}
 
-    public ArrayList<Member> readFromFileAddToMemberArrayListTest(Path readFromFilePath) throws FileNotFoundException {
-        ArrayList<Member> memberList = new ArrayList<Member>();
+    public ArrayList<String> readFromFileAddToStringArrayListTest(Path readFromFilePath) throws FileNotFoundException {
+        ArrayList<String> memberListUnfiltered = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader(readFromFilePath.toString()))) {
             String line;
             boolean firstLine = true;
@@ -21,7 +21,7 @@ public class FileOperations {
                     firstLine = false;
                     continue;
                 }
-                memberList.add(new Member(line));
+                memberListUnfiltered.add(line.trim());
             }
         } catch (FileNotFoundException e) {
             if(isTestMode){
@@ -32,8 +32,14 @@ public class FileOperations {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return memberList;
+        return memberListUnfiltered;
     }
+
+    public String getNameFromLine(String line){
+
+        return ";";
+    }
+
 
     public void writeToFile(Path writeToFilePath){
 

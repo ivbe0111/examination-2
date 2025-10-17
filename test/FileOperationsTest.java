@@ -22,13 +22,20 @@ class FileOperationsTest {
     }
 
     @Test
-    void readFromFileAddToMemberArrayListTest() throws FileNotFoundException {
-        ArrayList<Member> memberList = fileOperations.readFromFileAddToMemberArrayListTest(readFromFilePath);
-
-        assertEquals(20, memberList.size());
-        assertNotEquals(0, memberList.size());
-
+    void readFromFileAddToStringArrayListTest() throws FileNotFoundException {
+        ArrayList<String> memberListUnfiltered = fileOperations.readFromFileAddToStringArrayListTest(readFromFilePath);
+        assertEquals(20, memberListUnfiltered.size());
+        assertNotEquals(0, memberListUnfiltered.size());
+        assertThrows(FileNotFoundException.class, () -> fileOperations.readFromFileAddToStringArrayListTest(Paths.get("src/.txt")));
     }
+
+
+
+//    @Test
+//    void getNameFromLineTest(){
+//
+//        assertEquals();
+//    }
 
     @Test
     void writeToFileTest() {
