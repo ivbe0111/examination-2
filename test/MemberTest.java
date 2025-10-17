@@ -63,6 +63,9 @@ class MemberTest {
         assertEquals(expiredExpected, member.getSubscriptionStatus(memberList.getFirst()));
         assertEquals(activeExpected, member.getSubscriptionStatus(memberList.get(2)));
         assertEquals(nonExistingExpected, member.getSubscriptionStatus(null));
+        assertNotEquals(nonExistingExpected, member.getSubscriptionStatus(memberList.getFirst()));
+        assertNotEquals(nonExistingExpected, member.getSubscriptionStatus(memberList.get(3)));
+        assertNotEquals(activeExpected, member.getSubscriptionStatus(memberList.getFirst()));
     }
 
 }

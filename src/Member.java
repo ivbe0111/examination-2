@@ -10,6 +10,7 @@ public class Member {
     private LocalDate joinDate;
     private LocalDate latestPayment;
     private MemberType memberType;
+    private int numberOfVisits;
 
     ArrayList<Member> memberList = new ArrayList<>();
     FileOperations fileOperations = new FileOperations();
@@ -27,6 +28,7 @@ public class Member {
         this.joinDate = joinDate;
         this.latestPayment = latestPayment;
         this.memberType = memberType;
+        this.numberOfVisits = 0;
     }
 
     public String getSubscriptionStatus(Member member) {
@@ -98,6 +100,14 @@ public class Member {
 
     public String getPersonalNumber() {
         return personalNumber;
+    }
+
+    public int getNumberOfVisits() {
+        return numberOfVisits;
+    }
+
+    public void setNumberOfVisits(int numberOfVisits) {
+        this.numberOfVisits = numberOfVisits;
     }
 
     public void setPersonalNumber(String personalNumber) {
