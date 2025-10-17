@@ -4,6 +4,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class FileOperations {
 
@@ -35,13 +36,14 @@ public class FileOperations {
         return memberListUnfiltered;
     }
 
-
-
     public String getNameFromStringArrayList(String line){
         return line.substring(0,line.indexOf(";"));
     }
     public String getAdressFromStringArrayList(String line){
-        return line.substring(0,line.indexOf(";"));
+        Scanner sc = new Scanner(line);
+        sc.useDelimiter(";");
+        sc.next(); //Skips name
+        return sc.next();
     }
 
 

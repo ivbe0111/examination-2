@@ -47,9 +47,8 @@ class FileOperationsTest {
     void getAdressFromStringArrayListTest() {
         String testLine = memberListUnfilteredForTest.getFirst();
         String lastLine = memberListUnfilteredForTest.getLast();
-        assertEquals("Fredrik Berggren",fileOperations.getNameFromStringArrayList(testLine));
-        assertEquals("Jakob Lundin",fileOperations.getNameFromStringArrayList(lastLine));
-        assertNotEquals("Fredde Berggren",fileOperations.getNameFromStringArrayList(testLine));
+        assertEquals("Skolgränd 8, 16819 Norrköping", fileOperations.getAdressFromStringArrayList(testLine));
+        assertEquals("Backgränd 19, 69618 Sandviken", fileOperations.getAdressFromStringArrayList(lastLine));
     }
 
     @Test
