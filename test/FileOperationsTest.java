@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -95,9 +96,36 @@ class FileOperationsTest {
         assertEquals(MemberType.STANDARD, fileOperations.getMemberTypeFromStringArrayList(lastLine));
     }
 
+
+    //TODO continue from here
     @Test
-    void writeToFileTest() {
-         fileOperations.writeToFile(Paths.get("src/Textfiles/PT-file.txt"));
+    void checkIfFileExists(){
+
+    }
+
+    @Test
+    void writeToFileTest() throws FileNotFoundException {
+        Path filePath = Paths.get("src/Textfiles/PT-file.txt");
+        Visit testVisit = new Visit("Ivan", "1231-2131",
+                LocalDateTime.now());
+        Visit testVisit2 = new Visit("Jeff", "1221-2131",
+                LocalDateTime.now());
+        testVisit.addVisitToVisitsArrayList();
+        testVisit2.addVisitToVisitsArrayList();
+
+//        fileOperations.writeToFile(filePath);
+        assertThrows(FileNotFoundException.class, () -> fileOperations.writeToFile(filePath));
+
+        try(BufferedReader br = new BufferedReader(new FileReader(filePath.toString()))) {
+            String line = br.readLine();
+            assertTrue(line != null);
+
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
 
     }
 

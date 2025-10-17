@@ -96,7 +96,23 @@ public class FileOperations {
         return null;
     }
 
-    public void writeToFile(Path writeToFilePath){
+        //TODO continue from here
+    public void writeToFile(Path writeToFilePath) throws FileNotFoundException {
+        checkIfFileExists();
+
+        try(BufferedReader br = new BufferedReader(new FileReader(writeToFilePath.toString()))) {
+
+
+
+        } catch (FileNotFoundException e) {
+            if(isTestMode){
+                throw new FileNotFoundException();
+            }else{
+                e.printStackTrace();
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
 
     }
