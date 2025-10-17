@@ -28,6 +28,15 @@ public class Member {
         this.memberType = memberType;
     }
 
+    public Member findMemberByName(String name) {
+        for (Member member : memberList) {
+            if (member.getName().equals(name)) {
+                return member;
+            }
+        }
+        return null;
+    }
+
     public ArrayList<Member> createMemberArrayListFromFile(ArrayList<String> memberListUnfiltered){
         for(String member : memberListUnfiltered){
             memberList.add(new Member(fileOperations.getNameFromStringArrayList(member),
