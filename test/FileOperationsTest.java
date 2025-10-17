@@ -17,6 +17,7 @@ class FileOperationsTest {
     Path readFromFilePath = Paths.get("src/Textfiles/gym_medlemmar.txt");
     FileOperations fileOperations = new FileOperations();
     ArrayList<String> memberListUnfilteredForTest = new ArrayList<>();
+    Visit visit = new Visit();
 
     @BeforeEach
     void setUp() throws FileNotFoundException {
@@ -96,6 +97,7 @@ class FileOperationsTest {
 
     @Test
     void writeToFileTest() {
+         fileOperations.writeToFile(Paths.get("src/Textfiles/PT-file.txt"));
 
     }
 

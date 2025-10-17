@@ -7,7 +7,7 @@ public class Visit {
     private String memberName;
     private String memberPersonalNumber;
     private LocalDateTime visitTime;
-    private ArrayList<Visit> visits = new ArrayList<>();
+    private static ArrayList<Visit> visits = new ArrayList<>();
 
 
     public Visit() {
@@ -20,7 +20,7 @@ public class Visit {
     }
 
     public void addVisitToVisitsArrayList(){
-        visits.add(new Visit(memberName, memberPersonalNumber, visitTime));
+        visits.add(this);
     }
 
     public String formatVisitTime(LocalDateTime visitTime) {

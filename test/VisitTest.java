@@ -2,6 +2,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -21,6 +22,21 @@ class VisitTest {
         assertNotEquals(testVisit.getVisitTime().toString(), visit.formatVisitTime(testVisit.getVisitTime()));
         assertNotEquals("17-10-2025 14:27", visit.formatVisitTime(testVisit.getVisitTime()));
     }
+    @Test
+    void addVisitToVisitsArrayListTest(){
+        Visit testVisit = new Visit("Ivan", "1231-2131",
+                LocalDateTime.now());
+        Visit testVisit2 = new Visit("Jeff", "1221-2131",
+                LocalDateTime.now());
+        testVisit.addVisitToVisitsArrayList();
+        testVisit2.addVisitToVisitsArrayList();
 
+        ArrayList<Visit> testVisits = testVisit.getVisits();
+        assertEquals(2, testVisits.size());
+        assertNotEquals(0, testVisits.size());
+        assertEquals("Jeff",testVisits.getLast().getMemberName());
+        assertNotEquals("Ivan",testVisits.getLast().getMemberName());
+
+    }
 
 }
