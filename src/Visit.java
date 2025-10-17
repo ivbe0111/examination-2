@@ -1,33 +1,41 @@
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Visit {
 
-    private String name;
-    private String personalNumber;
+    private String memberName;
+    private String memberPersonalNumber;
     private LocalDateTime visitTime;
 
-    public Visit(){}
-
-    public Visit(String name, String personalNumber, LocalDateTime visitTime) {
-        this.name = name;
-        this.personalNumber = personalNumber;
-        this.visitTime = LocalDateTime.now();
+    public Visit() {
     }
 
-    public String getName() {
-        return name;
+    public Visit(String memberName, String memberPersonalNumber, LocalDateTime visitTime) {
+        this.memberName = memberName;
+        this.memberPersonalNumber = memberPersonalNumber;
+        this.visitTime = visitTime;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public String formatVisitTime(LocalDateTime visitTime) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+        return visitTime.format(formatter);
     }
 
-    public String getPersonalNumber() {
-        return personalNumber;
+    public String getMemberName() {
+        return memberName;
     }
 
-    public void setPersonalNumber(String personalNumber) {
-        this.personalNumber = personalNumber;
+    public void setMemberName(String memberName) {
+        this.memberName = memberName;
+    }
+
+    public String getMemberPersonalNumber() {
+        return memberPersonalNumber;
+    }
+
+    public void setMemberPersonalNumber(String memberPersonalNumber) {
+        this.memberPersonalNumber = memberPersonalNumber;
     }
 
     public LocalDateTime getVisitTime() {
