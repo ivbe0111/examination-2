@@ -15,10 +15,13 @@ class FileOperationsTest {
 
     Path readFromFilePath = Paths.get("src/Textfiles/gym_medlemmar.txt");
     FileOperations fileOperations = new FileOperations();
+    ArrayList<String> memberListUnfilteredForTest = new ArrayList<>();
 
     @BeforeEach
-    void setUp(){
+    void setUp() throws FileNotFoundException {
         fileOperations.isTestMode = true;
+        memberListUnfilteredForTest = fileOperations.readFromFileAddToStringArrayListTest(readFromFilePath);
+
     }
 
     @Test
@@ -31,11 +34,23 @@ class FileOperationsTest {
 
 
 
-//    @Test
-//    void getNameFromLineTest(){
-//
-//        assertEquals();
-//    }
+    @Test
+    void getNameFromStringArrayListTest() {
+        String testLine = memberListUnfilteredForTest.getFirst();
+        String lastLine = memberListUnfilteredForTest.getLast();
+        assertEquals("Fredrik Berggren",fileOperations.getNameFromStringArrayList(testLine));
+        assertEquals("Jakob Lundin",fileOperations.getNameFromStringArrayList(lastLine));
+        assertNotEquals("Fredde Berggren",fileOperations.getNameFromStringArrayList(testLine));
+    }
+
+    @Test
+    void getAdressFromStringArrayListTest() {
+        String testLine = memberListUnfilteredForTest.getFirst();
+        String lastLine = memberListUnfilteredForTest.getLast();
+        assertEquals("Fredrik Berggren",fileOperations.getNameFromStringArrayList(testLine));
+        assertEquals("Jakob Lundin",fileOperations.getNameFromStringArrayList(lastLine));
+        assertNotEquals("Fredde Berggren",fileOperations.getNameFromStringArrayList(testLine));
+    }
 
     @Test
     void writeToFileTest() {

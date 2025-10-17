@@ -35,9 +35,13 @@ public class FileOperations {
         return memberListUnfiltered;
     }
 
-    public String getNameFromLine(String line){
 
-        return ";";
+
+    public String getNameFromStringArrayList(String line){
+        return line.substring(0,line.indexOf(";"));
+    }
+    public String getAdressFromStringArrayList(String line){
+        return line.substring(0,line.indexOf(";"));
     }
 
 
