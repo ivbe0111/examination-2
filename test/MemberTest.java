@@ -20,7 +20,7 @@ class MemberTest {
     }
 
     @Test
-    void createMemberArrayListFromFile() {
+    void createMemberArrayListFromFileTest() {
         ArrayList<Member> memberList = member.createMemberArrayListFromFile(memberListUnfiltered);
         assertEquals(memberList.size(), memberListUnfiltered.size());
         assertEquals("Backgränd 19, 69618 Sandviken", memberList.getLast().getAddress());
@@ -31,7 +31,7 @@ class MemberTest {
     }
 
     @Test
-    void findMemberByName(){
+    void findMemberByNameTest(){
         ArrayList<Member> memberList = member.createMemberArrayListFromFile(memberListUnfiltered);
 
         assertEquals(memberList.get(0), member.findMemberByName("Fredrik Berggren"));
@@ -41,4 +41,16 @@ class MemberTest {
         assertNotEquals(memberList.getLast(), member.findMemberByName("Lundin"));
         assertNotEquals(memberList.getLast(), member.findMemberByName(""));
     }
+    @Test
+    void findMemberByPersonalNumberTest(){
+        ArrayList<Member> memberList = member.createMemberArrayListFromFile(memberListUnfiltered);
+
+        assertEquals(memberList.get(0), member.findMemberByPersonalNumber("851020-6728"));
+        assertEquals(memberList.getLast(), member.findMemberByPersonalNumber("000718-8949"));
+        assertEquals(memberList.get(5), member.findMemberByPersonalNumber("940128-7025"));
+        assertNotEquals(memberList.get(5), member.findMemberByPersonalNumber("940128-702"));
+        assertNotEquals(memberList.getLast(), member.findMemberByPersonalNumber("Lundin"));
+        assertNotEquals(memberList.getLast(), member.findMemberByPersonalNumber(""));
+    }
+
 }

@@ -37,6 +37,15 @@ public class Member {
         return null;
     }
 
+    public Member findMemberByPersonalNumber(String personalNumber) {
+        for (Member member : memberList) {
+            if (member.getPersonalNumber().equals(personalNumber)) {
+                return member;
+            }
+        }
+        return null;
+    }
+
     public ArrayList<Member> createMemberArrayListFromFile(ArrayList<String> memberListUnfiltered){
         for(String member : memberListUnfiltered){
             memberList.add(new Member(fileOperations.getNameFromStringArrayList(member),
