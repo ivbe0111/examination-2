@@ -45,6 +45,13 @@ public class FileOperations {
         sc.next(); //Skips name
         return sc.next();
     }
+    public String getEmailFromStringArrayList(String line){
+        Scanner sc = new Scanner(line);
+        sc.useDelimiter(";");
+        sc.next(); //Skips name
+        sc.next(); //Skips adress
+        return sc.next();
+    }
 
 
     public void writeToFile(Path writeToFilePath){

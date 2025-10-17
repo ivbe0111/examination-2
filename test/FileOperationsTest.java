@@ -50,6 +50,13 @@ class FileOperationsTest {
         assertEquals("Skolgränd 8, 16819 Norrköping", fileOperations.getAdressFromStringArrayList(testLine));
         assertEquals("Backgränd 19, 69618 Sandviken", fileOperations.getAdressFromStringArrayList(lastLine));
     }
+    @Test
+    void getEmailFromStringArrayListTest() {
+        String testLine = memberListUnfilteredForTest.getFirst();
+        String lastLine = memberListUnfilteredForTest.getLast();
+        assertEquals("fredde@fakemail.se", fileOperations.getEmailFromStringArrayList(testLine));
+        assertEquals("jacke@fakemail.com", fileOperations.getEmailFromStringArrayList(lastLine));
+    }
 
     @Test
     void writeToFileTest() {
