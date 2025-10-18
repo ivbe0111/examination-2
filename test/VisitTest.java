@@ -51,7 +51,8 @@ class VisitTest {
         assertNotEquals(0, testVisits.size());
         assertEquals("Astrid Larsson",testVisits.getLast().getMemberName());
         assertNotEquals("Ivan",testVisits.getLast().getMemberName());
-
     }
+
+
 
 }

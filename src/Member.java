@@ -1,4 +1,5 @@
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 public class Member {
@@ -55,8 +56,27 @@ public class Member {
         return null;
     }
 
+    public void memberVisitsGym(){
+
+        Visit visit = new Visit(this.name,this.personalNumber, LocalDateTime.now());
+        this.numberOfVisits++;
+    }
+
+    public String printTotalVisitsMember(){
+        StringBuilder sb = new StringBuilder();
+        for(Member member : memberList){
+            if(member.getNumberOfVisits()>0){
+                sb.append(member.getName()).append(" ")
+                        .append(member.getPersonalNumber()).append(" ")
+                        .append("Total visits: ")
+                        .append(member.getNumberOfVisits()).append("\n");
+            }
+        }
+
+        return sb.toString();
+    }
+
     public Member findMemberByPersonalNumber(String personalNumber) {
-        IO.println(personalNumber);
         for (Member member : memberList) {
             if (member.getPersonalNumber().equals(personalNumber)) {
                 return member;
