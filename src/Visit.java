@@ -44,35 +44,15 @@ public class Visit {
         return memberName;
     }
 
-    public void setMemberName(String memberName) {
-        this.memberName = memberName;
-    }
-
-    public String getMemberPersonalNumber() {
-        return memberPersonalNumber;
-    }
-
     public ArrayList<Visit> getVisits() {
         return visits;
-    }
-
-    public void setVisits(ArrayList<Visit> visits) {
-        this.visits = visits;
     }
 
     public void clearVisitsArrayList(){
         this.visits.clear();
     }
 
-    public void setMemberPersonalNumber(String memberPersonalNumber) {
-        this.memberPersonalNumber = memberPersonalNumber;
-    }
-
     public LocalDateTime getVisitTime() {
         return visitTime;
-    }
-
-    public void setVisitTime(LocalDateTime visitTime) {
-        this.visitTime = visitTime;
     }
 }
