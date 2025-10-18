@@ -20,7 +20,7 @@ public class GUI extends JFrame {
         fileOperations.readFromFileAddToStringArrayList(path);
 
         //Create Frame
-        setSize(500,200);
+        setSize(500, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
@@ -28,7 +28,7 @@ public class GUI extends JFrame {
         //Create textPanel
         add(textPanel);
         textPanel.setVisible(true);
-        textPanel.setPreferredSize(new Dimension(500,200));
+        textPanel.setPreferredSize(new Dimension(500, 200));
         textPanel.add(welcomeLabel);
         textPanel.add(welcomeLabel2);
         textPanel.add(inputFieldForNameOrPersonalNumber);
@@ -44,5 +44,4 @@ public class GUI extends JFrame {
     static void main() throws FileNotFoundException {
         GUI gui = new GUI();
     }
-
 }
