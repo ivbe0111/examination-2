@@ -17,30 +17,29 @@ class FileOperationsTest {
 
     Path readFromFilePath = Paths.get("src/Textfiles/gym_medlemmar.txt");
     FileOperations fileOperations = new FileOperations();
-    ArrayList<String> memberListUnfilteredForTest = new ArrayList<>();
-    ArrayList<Member> memberList;
     Member member = new Member();
+    ArrayList<Member> memberList;
     Visit visit = new Visit();
+    String testLine = "Fredrik Berggren;Skolgränd 8, 16819 Norrköping;fredde@fakemail.se;851020-6728;2019-12-30;2021-12-30;Platina";
+    String lastLine = "Jakob Lundin;Backgränd 19, 69618 Sandviken;jacke@fakemail.com;000718-8949;2020-07-10;2022-07-10;Standard";
 
     @BeforeEach
     void setUp() throws FileNotFoundException {
         fileOperations.isTestMode = true;
-        memberListUnfilteredForTest = fileOperations.readFromFileAddToStringArrayList(readFromFilePath);
-        memberList = member.createMemberArrayListFromFile(memberListUnfilteredForTest);
+        member.clearMemberList();
+        fileOperations.readFromFileAddToStringArrayList(readFromFilePath);
+        memberList = member.getMemberList();
     }
 
     @Test
     void readFromFileAddToStringArrayListTest() throws FileNotFoundException {
-        ArrayList<String> memberListUnfiltered = fileOperations.readFromFileAddToStringArrayList(readFromFilePath);
-        assertEquals(20, memberListUnfiltered.size());
-        assertNotEquals(0, memberListUnfiltered.size());
+        assertEquals(20, memberList.size());
+        assertNotEquals(0, memberList.size());
         assertThrows(FileNotFoundException.class, () -> fileOperations.readFromFileAddToStringArrayList(Paths.get("src/.txt")));
     }
 
     @Test
     void getNameFromStringArrayListTest() {
-        String testLine = memberListUnfilteredForTest.getFirst();
-        String lastLine = memberListUnfilteredForTest.getLast();
         assertEquals("Fredrik Berggren",fileOperations.getNameFromStringArrayList(testLine));
         assertEquals("Jakob Lundin",fileOperations.getNameFromStringArrayList(lastLine));
         assertNotEquals("Fredde Berggren",fileOperations.getNameFromStringArrayList(testLine));
@@ -48,31 +47,23 @@ class FileOperationsTest {
 
     @Test
     void getAdressFromStringArrayListTest() {
-        String testLine = memberListUnfilteredForTest.getFirst();
-        String lastLine = memberListUnfilteredForTest.getLast();
         assertEquals("Skolgränd 8, 16819 Norrköping", fileOperations.getAdressFromStringArrayList(testLine));
         assertEquals("Backgränd 19, 69618 Sandviken", fileOperations.getAdressFromStringArrayList(lastLine));
     }
     @Test
     void getEmailFromStringArrayListTest() {
-        String testLine = memberListUnfilteredForTest.getFirst();
-        String lastLine = memberListUnfilteredForTest.getLast();
         assertEquals("fredde@fakemail.se", fileOperations.getEmailFromStringArrayList(testLine));
         assertEquals("jacke@fakemail.com", fileOperations.getEmailFromStringArrayList(lastLine));
     }
 
     @Test
     void getPersonalnumberFromStringArrayListTest() {
-        String testLine = memberListUnfilteredForTest.getFirst();
-        String lastLine = memberListUnfilteredForTest.getLast();
         assertEquals("851020-6728", fileOperations.getPersonalnumberFromStringArrayList(testLine));
         assertEquals("000718-8949", fileOperations.getPersonalnumberFromStringArrayList(lastLine));
     }
 
     @Test
     void getJoinDateFromStringArrayListTest() {
-        String testLine = memberListUnfilteredForTest.getFirst();
-        String lastLine = memberListUnfilteredForTest.getLast();
         LocalDate expectedDateTestLine = LocalDate.of(2019,12,30);
         LocalDate expectedDateLastLine = LocalDate.of(2020,7,10);
 
@@ -81,8 +72,6 @@ class FileOperationsTest {
     }
     @Test
     void getLastPaymentFromStringArrayListTest() {
-        String testLine = memberListUnfilteredForTest.getFirst();
-        String lastLine = memberListUnfilteredForTest.getLast();
         LocalDate expectedDateTestLine = LocalDate.of(2021,12,30);
         LocalDate expectedDateLastLine = LocalDate.of(2022,7,10);
 
@@ -91,9 +80,6 @@ class FileOperationsTest {
     }
     @Test
     void getMemberTypeFromStringArrayListTest() {
-        String testLine = memberListUnfilteredForTest.getFirst();
-        String lastLine = memberListUnfilteredForTest.getLast();
-
         assertEquals(MemberType.PLATINA, fileOperations.getMemberTypeFromStringArrayList(testLine));
         assertEquals(MemberType.STANDARD, fileOperations.getMemberTypeFromStringArrayList(lastLine));
     }

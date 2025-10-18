@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import java.io.FileNotFoundException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,15 +11,14 @@ import static org.junit.jupiter.api.Assertions.*;
 class MemberTest {
     Path readFromFilePath = Paths.get("src/Textfiles/gym_medlemmar.txt");
     FileOperations fileOperations = new FileOperations();
-    ArrayList<String> memberListUnfiltered;
-    ArrayList<Member> memberList;
     Member member = new Member();
-    Visit visit = new Visit();
+    ArrayList<Member> memberList;
 
     @BeforeEach
     void setUp() throws FileNotFoundException {
-        memberListUnfiltered = fileOperations.readFromFileAddToStringArrayList(readFromFilePath);
-        memberList = member.createMemberArrayListFromFile(memberListUnfiltered);
+        member.clearMemberList();
+        fileOperations.readFromFileAddToStringArrayList(readFromFilePath);
+        memberList = member.getMemberList();
     }
 
     @Test
@@ -40,17 +38,6 @@ class MemberTest {
         String expected = "Astrid Larsson 540815-4382 Total visits: 2\nHerbert Jansson 060201-4763 Total visits: 1\n";
         assertEquals(expected,member.printTotalVisitsMember());
         assertNotEquals("",member.printTotalVisitsMember());
-    }
-
-    @Test
-    void createMemberArrayListFromFileTest() {
-//        ArrayList<Member> memberList = member.createMemberArrayListFromFile(memberListUnfiltered);
-        assertEquals(memberList.size(), memberListUnfiltered.size());
-        assertEquals("Backgränd 19, 69618 Sandviken", memberList.getLast().getAddress());
-        assertEquals("asta@fakemail.de", memberList.get(1).getEmail());
-        assertEquals(MemberType.STANDARD, memberList.get(3).getMemberType());
-        assertNotEquals(memberList.size()+1, memberListUnfiltered.size());
-        assertNotEquals("Pelle", memberList.getFirst().getName());
     }
 
     @Test

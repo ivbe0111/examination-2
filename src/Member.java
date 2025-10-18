@@ -12,10 +12,7 @@ public class Member {
     private LocalDate latestPayment;
     private MemberType memberType;
     private int numberOfVisits;
-
-    Visit visit = new Visit();
-    ArrayList<Member> memberList = new ArrayList<>();
-    FileOperations fileOperations = new FileOperations();
+    private static ArrayList<Member> memberList = new ArrayList<>();
 
     public Member() {
     }
@@ -31,9 +28,15 @@ public class Member {
         this.latestPayment = latestPayment;
         this.memberType = memberType;
         this.numberOfVisits = 0;
+        addToMemberListArray();
     }
 
-
+    public void addToMemberListArray(){
+        memberList.add(this);
+    }
+    public void clearMemberList(){
+        memberList.clear();
+    }
 
     public String getSubscriptionStatus(Member member) {
         LocalDate expirationDateForSubscription = LocalDate.now().minusYears(1);
@@ -83,19 +86,6 @@ public class Member {
             }
         }
         return null;
-    }
-
-    public ArrayList<Member> createMemberArrayListFromFile(ArrayList<String> memberListUnfiltered) {
-        for (String member : memberListUnfiltered) {
-            memberList.add(new Member(fileOperations.getNameFromStringArrayList(member),
-                    fileOperations.getAdressFromStringArrayList(member),
-                    fileOperations.getEmailFromStringArrayList(member),
-                    fileOperations.getPersonalnumberFromStringArrayList(member),
-                    fileOperations.getJoinDateFromStringArrayList(member),
-                    fileOperations.getLastPaymentFromStringArrayList(member),
-                    fileOperations.getMemberTypeFromStringArrayList(member)));
-        }
-        return memberList;
     }
 
     public void addVisit(){

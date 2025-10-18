@@ -7,76 +7,88 @@ import java.util.Scanner;
 public class FileOperations {
 
     public boolean isTestMode = false;
+    Member member = new Member();
 
-    public FileOperations(){}
+    public FileOperations() {
+    }
 
-    public ArrayList<String> readFromFileAddToStringArrayList(Path readFromFilePath) throws FileNotFoundException {
-        ArrayList<String> memberListUnfiltered = new ArrayList<>();
-        try(BufferedReader br = new BufferedReader(new FileReader(readFromFilePath.toString()))) {
+    public void readFromFileAddToStringArrayList(Path readFromFilePath) throws FileNotFoundException {
+        try (BufferedReader br = new BufferedReader(new FileReader(readFromFilePath.toString()))) {
             String line;
             boolean firstLine = true;
-            while((line = br.readLine()) != null){
-                if(firstLine){
+            while ((line = br.readLine()) != null) {
+                if (firstLine) {
                     firstLine = false;
                     continue;
                 }
-                memberListUnfiltered.add(line.trim());
+                Member member = new Member(getNameFromStringArrayList(line),
+                        getAdressFromStringArrayList(line),
+                        getEmailFromStringArrayList(line),
+                        getPersonalnumberFromStringArrayList(line),
+                        getJoinDateFromStringArrayList(line),
+                        getLastPaymentFromStringArrayList(line),
+                        getMemberTypeFromStringArrayList(line));
             }
         } catch (FileNotFoundException e) {
-            if(isTestMode){
+            if (isTestMode) {
                 throw new FileNotFoundException();
-            } else{
+            } else {
                 e.printStackTrace();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return memberListUnfiltered;
     }
 
-    public String getNameFromStringArrayList(String line){
-        return line.substring(0,line.indexOf(";"));
+    public String getNameFromStringArrayList(String line) {
+        return line.substring(0, line.indexOf(";"));
     }
-    public String getAdressFromStringArrayList(String line){
+
+    public String getAdressFromStringArrayList(String line) {
         Scanner sc = new Scanner(line);
         sc.useDelimiter(";");
         sc.next(); //Skips name
         return sc.next();
     }
-    public String getEmailFromStringArrayList(String line){
+
+    public String getEmailFromStringArrayList(String line) {
         Scanner sc = new Scanner(line);
         sc.useDelimiter(";");
         sc.next(); //Skips name
         sc.next(); //Skips adress
         return sc.next();
     }
-    public String getPersonalnumberFromStringArrayList(String line){
+
+    public String getPersonalnumberFromStringArrayList(String line) {
         Scanner sc = new Scanner(line);
         sc.useDelimiter(";");
         //Skips name, adress & email
-        for(int i = 0; i < 3; i++){
+        for (int i = 0; i < 3; i++) {
             sc.next();
         }
         return sc.next();
     }
-    public LocalDate getJoinDateFromStringArrayList(String line){
+
+    public LocalDate getJoinDateFromStringArrayList(String line) {
         Scanner sc = new Scanner(line);
         sc.useDelimiter(";");
         //Skips name, adress, email, personaNumber
-        for(int i = 0; i < 4; i++){
-            sc.next();
-        }
-         return LocalDate.parse(sc.next());
-    }
-    public LocalDate getLastPaymentFromStringArrayList(String line){
-        Scanner sc = new Scanner(line);
-        sc.useDelimiter(";");
-        //Skips name, adress, email, personaNumber, joindate
-        for(int i = 0; i < 5; i++){
+        for (int i = 0; i < 4; i++) {
             sc.next();
         }
         return LocalDate.parse(sc.next());
     }
+
+    public LocalDate getLastPaymentFromStringArrayList(String line) {
+        Scanner sc = new Scanner(line);
+        sc.useDelimiter(";");
+        //Skips name, adress, email, personaNumber, joindate
+        for (int i = 0; i < 5; i++) {
+            sc.next();
+        }
+        return LocalDate.parse(sc.next());
+    }
+
     public MemberType getMemberTypeFromStringArrayList(String line) {
         Scanner sc = new Scanner(line);
         sc.useDelimiter(";");
@@ -97,23 +109,23 @@ public class FileOperations {
         Visit visits = new Visit();
         ArrayList<Visit> visitList = visits.getVisits();
 
-        try(BufferedWriter bw = new BufferedWriter(new FileWriter(writeToFilePath.toString()))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(writeToFilePath.toString()))) {
 
             bw.write("Name\t\t\t\tPersonalNumber\tDate Visited\n");
-            for(Visit visit : visitList){
+            for (Visit visit : visitList) {
                 bw.write(visit.toString());
             }
+            bw.newLine();
+            bw.write(member.printTotalVisitsMember());
 
         } catch (FileNotFoundException e) {
-            if(isTestMode){
+            if (isTestMode) {
                 throw new FileNotFoundException();
-            }else{
+            } else {
                 e.printStackTrace();
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
-
     }
 }
