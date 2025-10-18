@@ -29,6 +29,17 @@ public class Visit {
         return visitTime.format(formatter);
     }
 
+    @Override
+    public String toString() {
+       StringBuilder sb = new StringBuilder();
+       sb.append("Visits to the gym\n").append("Name\t\t").append("PersonalNumber\t")
+               .append("Visit Time:\n").append(memberName).append("\t\t")
+               .append(memberPersonalNumber).append("\t\t")
+               .append(formatVisitTime(visitTime)).append("\n");
+
+        return sb.toString();
+    }
+
     public String getMemberName() {
         return memberName;
     }
@@ -47,6 +58,10 @@ public class Visit {
 
     public void setVisits(ArrayList<Visit> visits) {
         this.visits = visits;
+    }
+
+    public void clearVisitsArrayList(){
+        this.visits.clear();
     }
 
     public void setMemberPersonalNumber(String memberPersonalNumber) {

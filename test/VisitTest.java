@@ -11,6 +11,7 @@ class VisitTest {
     Visit visit = new Visit();
     @BeforeEach
     void setUp() {
+
     }
 
     @Test
@@ -24,14 +25,17 @@ class VisitTest {
     }
     @Test
     void addVisitToVisitsArrayListTest(){
-        Visit testVisit = new Visit("Ivan", "1231-2131",
+
+        Visit testVisit = new Visit("Ivan Berezkin", "1231-2131",
                 LocalDateTime.now());
         Visit testVisit2 = new Visit("Jeff", "1221-2131",
                 LocalDateTime.now());
+
+        visit.clearVisitsArrayList();
         testVisit.addVisitToVisitsArrayList();
         testVisit2.addVisitToVisitsArrayList();
+        ArrayList<Visit> testVisits = visit.getVisits();
 
-        ArrayList<Visit> testVisits = testVisit.getVisits();
         assertEquals(2, testVisits.size());
         assertNotEquals(0, testVisits.size());
         assertEquals("Jeff",testVisits.getLast().getMemberName());

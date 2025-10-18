@@ -1,7 +1,5 @@
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
+import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -96,14 +94,15 @@ public class FileOperations {
         return null;
     }
 
-        //TODO continue from here
     public void writeToFile(Path writeToFilePath) throws FileNotFoundException {
-        checkIfFileExists();
+        Visit visits = new Visit();
+        ArrayList<Visit> visitList = visits.getVisits();
 
-        try(BufferedReader br = new BufferedReader(new FileReader(writeToFilePath.toString()))) {
-
-
-
+        try(BufferedWriter bw = new BufferedWriter(new FileWriter(writeToFilePath.toString()))) {
+            for(Visit visit : visitList){
+                bw.write(visit.toString());
+                bw.newLine();
+            }
         } catch (FileNotFoundException e) {
             if(isTestMode){
                 throw new FileNotFoundException();

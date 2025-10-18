@@ -96,25 +96,18 @@ class FileOperationsTest {
         assertEquals(MemberType.STANDARD, fileOperations.getMemberTypeFromStringArrayList(lastLine));
     }
 
-
-    //TODO continue from here
     @Test
-    void checkIfFileExists(){
-
-    }
-
-    @Test
-    void writeToFileTest() throws FileNotFoundException {
+    void writeToFileTest() throws IOException {
         Path filePath = Paths.get("src/Textfiles/PT-file.txt");
         Visit testVisit = new Visit("Ivan", "1231-2131",
                 LocalDateTime.now());
         Visit testVisit2 = new Visit("Jeff", "1221-2131",
                 LocalDateTime.now());
+        visit.clearVisitsArrayList();
         testVisit.addVisitToVisitsArrayList();
         testVisit2.addVisitToVisitsArrayList();
+        fileOperations.writeToFile(filePath);
 
-//        fileOperations.writeToFile(filePath);
-        assertThrows(FileNotFoundException.class, () -> fileOperations.writeToFile(filePath));
 
         try(BufferedReader br = new BufferedReader(new FileReader(filePath.toString()))) {
             String line = br.readLine();
