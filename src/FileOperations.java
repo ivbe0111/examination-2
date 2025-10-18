@@ -101,7 +101,6 @@ public class FileOperations {
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(writeToFilePath.toString()))) {
             for(Visit visit : visitList){
                 bw.write(visit.toString());
-                bw.newLine();
             }
         } catch (FileNotFoundException e) {
             if(isTestMode){

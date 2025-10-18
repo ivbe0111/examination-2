@@ -32,8 +32,7 @@ public class Visit {
     @Override
     public String toString() {
        StringBuilder sb = new StringBuilder();
-       sb.append("Visits to the gym\n").append("Name\t\t").append("PersonalNumber\t")
-               .append("Visit Time:\n").append(memberName).append("\t\t")
+                sb.append(memberName).append("\t\t")
                .append(memberPersonalNumber).append("\t\t")
                .append(formatVisitTime(visitTime)).append("\n");
 

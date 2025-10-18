@@ -99,13 +99,17 @@ class FileOperationsTest {
     @Test
     void writeToFileTest() throws IOException {
         Path filePath = Paths.get("src/Textfiles/PT-file.txt");
-        Visit testVisit = new Visit("Ivan", "1231-2131",
+        Visit testVisit = new Visit("Astrid Larsson", "540815-4382",
                 LocalDateTime.now());
-        Visit testVisit2 = new Visit("Jeff", "1221-2131",
+        Visit testVisit2 = new Visit("Herbert Jansson", "060201-4763",
                 LocalDateTime.now());
+        Visit testVisit3 = new Visit("Astrid Larsson", "540815-4382",
+                LocalDateTime.of(2025,10,17,14,27, 10, 100));
+
         visit.clearVisitsArrayList();
         testVisit.addVisitToVisitsArrayList();
         testVisit2.addVisitToVisitsArrayList();
+        testVisit3.addVisitToVisitsArrayList();
         fileOperations.writeToFile(filePath);
 
 

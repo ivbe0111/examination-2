@@ -12,6 +12,7 @@ public class Member {
     private MemberType memberType;
     private int numberOfVisits;
 
+    Visit visit = new Visit();
     ArrayList<Member> memberList = new ArrayList<>();
     FileOperations fileOperations = new FileOperations();
 
@@ -30,6 +31,8 @@ public class Member {
         this.memberType = memberType;
         this.numberOfVisits = 0;
     }
+
+
 
     public String getSubscriptionStatus(Member member) {
         LocalDate expirationDateForSubscription = LocalDate.now().minusYears(1);
@@ -74,6 +77,10 @@ public class Member {
         return memberList;
     }
 
+    public void addVisit(){
+        this.numberOfVisits++;
+    }
+
     public String getName() {
         return name;
     }
@@ -92,6 +99,14 @@ public class Member {
 
     public String getEmail() {
         return email;
+    }
+
+    public ArrayList<Member> getMemberList() {
+        return memberList;
+    }
+
+    public void setMemberList(ArrayList<Member> memberList) {
+        this.memberList = memberList;
     }
 
     public void setEmail(String email) {
