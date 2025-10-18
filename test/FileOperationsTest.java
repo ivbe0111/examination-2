@@ -23,16 +23,16 @@ class FileOperationsTest {
     @BeforeEach
     void setUp() throws FileNotFoundException {
         fileOperations.isTestMode = true;
-        memberListUnfilteredForTest = fileOperations.readFromFileAddToStringArrayListTest(readFromFilePath);
+        memberListUnfilteredForTest = fileOperations.readFromFileAddToStringArrayList(readFromFilePath);
 
     }
 
     @Test
     void readFromFileAddToStringArrayListTest() throws FileNotFoundException {
-        ArrayList<String> memberListUnfiltered = fileOperations.readFromFileAddToStringArrayListTest(readFromFilePath);
+        ArrayList<String> memberListUnfiltered = fileOperations.readFromFileAddToStringArrayList(readFromFilePath);
         assertEquals(20, memberListUnfiltered.size());
         assertNotEquals(0, memberListUnfiltered.size());
-        assertThrows(FileNotFoundException.class, () -> fileOperations.readFromFileAddToStringArrayListTest(Paths.get("src/.txt")));
+        assertThrows(FileNotFoundException.class, () -> fileOperations.readFromFileAddToStringArrayList(Paths.get("src/.txt")));
     }
 
     @Test
@@ -99,17 +99,13 @@ class FileOperationsTest {
     @Test
     void writeToFileTest() throws IOException {
         Path filePath = Paths.get("src/Textfiles/PT-file.txt");
+        visit.clearVisitsArrayList();
         Visit testVisit = new Visit("Astrid Larsson", "540815-4382",
                 LocalDateTime.now());
         Visit testVisit2 = new Visit("Herbert Jansson", "060201-4763",
                 LocalDateTime.now());
         Visit testVisit3 = new Visit("Astrid Larsson", "540815-4382",
                 LocalDateTime.of(2025,10,17,14,27, 10, 100));
-
-        visit.clearVisitsArrayList();
-        testVisit.addVisitToVisitsArrayList();
-        testVisit2.addVisitToVisitsArrayList();
-        testVisit3.addVisitToVisitsArrayList();
         fileOperations.writeToFile(filePath);
 
 

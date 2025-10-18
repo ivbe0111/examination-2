@@ -1,6 +1,9 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.io.FileNotFoundException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
@@ -9,36 +12,39 @@ import static org.junit.jupiter.api.Assertions.*;
 class VisitTest {
 
     Visit visit = new Visit();
-    @BeforeEach
-    void setUp() {
+    Member member = new Member();
+    Path readFromFilePath = Paths.get("src/Textfiles/gym_medlemmar.txt");
+    ArrayList<Member> memberList = new ArrayList<>();
+    FileOperations fileOperations = new FileOperations();
 
+    @BeforeEach
+    void setUp() throws FileNotFoundException {
+    memberList = member.createMemberArrayListFromFile
+            (fileOperations.readFromFileAddToStringArrayList(readFromFilePath));
     }
 
     @Test
     void formatVisitTimeTest() {
-        Visit testVisit = new Visit("Ivan", "1231-2131",LocalDateTime.of
-                (2025,10,17,14,27, 10, 100));
+        Visit testVisit =new Visit("Astrid Larsson", "540815-4382",
+                LocalDateTime.of(2025,10,17,14,27, 10, 100));
         String expectedTime = "2025-10-17 14:27";
         assertEquals(expectedTime, visit.formatVisitTime(testVisit.getVisitTime()));
         assertNotEquals(testVisit.getVisitTime().toString(), visit.formatVisitTime(testVisit.getVisitTime()));
         assertNotEquals("17-10-2025 14:27", visit.formatVisitTime(testVisit.getVisitTime()));
     }
 
-
     @Test
     void addVisitToVisitsArrayListTest(){
-
+        visit.clearVisitsArrayList();
         Visit testVisit = new Visit("Astrid Larsson", "540815-4382",
                 LocalDateTime.now());
+        member = member.findMemberByPersonalNumber("540815-4382");
+        member.addVisit();
         Visit testVisit2 = new Visit("Herbert Jansson", "060201-4763",
                 LocalDateTime.now());
         Visit testVisit3 = new Visit("Astrid Larsson", "540815-4382",
                 LocalDateTime.of(2025,10,17,14,27, 10, 100));
 
-        visit.clearVisitsArrayList();
-        testVisit.addVisitToVisitsArrayList();
-        testVisit2.addVisitToVisitsArrayList();
-        testVisit3.addVisitToVisitsArrayList();
         ArrayList<Visit> testVisits = visit.getVisits();
 
         assertEquals(3, testVisits.size());

@@ -16,7 +16,7 @@ class MemberTest {
 
     @BeforeEach
     void setUp() throws FileNotFoundException {
-        memberListUnfiltered = fileOperations.readFromFileAddToStringArrayListTest(readFromFilePath);
+        memberListUnfiltered = fileOperations.readFromFileAddToStringArrayList(readFromFilePath);
     }
 
     @Test

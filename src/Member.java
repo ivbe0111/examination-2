@@ -56,6 +56,7 @@ public class Member {
     }
 
     public Member findMemberByPersonalNumber(String personalNumber) {
+        IO.println(personalNumber);
         for (Member member : memberList) {
             if (member.getPersonalNumber().equals(personalNumber)) {
                 return member;

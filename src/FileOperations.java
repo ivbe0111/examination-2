@@ -1,5 +1,4 @@
 import java.io.*;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -11,7 +10,7 @@ public class FileOperations {
 
     public FileOperations(){}
 
-    public ArrayList<String> readFromFileAddToStringArrayListTest(Path readFromFilePath) throws FileNotFoundException {
+    public ArrayList<String> readFromFileAddToStringArrayList(Path readFromFilePath) throws FileNotFoundException {
         ArrayList<String> memberListUnfiltered = new ArrayList<>();
         try(BufferedReader br = new BufferedReader(new FileReader(readFromFilePath.toString()))) {
             String line;

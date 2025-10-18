@@ -17,6 +17,7 @@ public class Visit {
         this.memberName = memberName;
         this.memberPersonalNumber = memberPersonalNumber;
         this.visitTime = visitTime;
+        addVisitToVisitsArrayList();
     }
 
     public void addVisitToVisitsArrayList(){
