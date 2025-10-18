@@ -36,15 +36,9 @@ class VisitTest {
     @Test
     void addVisitToVisitsArrayListTest(){
         visit.clearVisitsArrayList();
-        Visit testVisit = new Visit("Astrid Larsson", "540815-4382",
-                LocalDateTime.now());
-        member = member.findMemberByPersonalNumber("540815-4382");
-        member.addVisit();
-        Visit testVisit2 = new Visit("Herbert Jansson", "060201-4763",
-                LocalDateTime.now());
-        Visit testVisit3 = new Visit("Astrid Larsson", "540815-4382",
-                LocalDateTime.of(2025,10,17,14,27, 10, 100));
-
+        memberList.get(1).memberVisitsGym();
+        memberList.get(6).memberVisitsGym();
+        memberList.get(1).memberVisitsGym();
         ArrayList<Visit> testVisits = visit.getVisits();
 
         assertEquals(3, testVisits.size());

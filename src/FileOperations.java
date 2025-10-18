@@ -98,9 +98,12 @@ public class FileOperations {
         ArrayList<Visit> visitList = visits.getVisits();
 
         try(BufferedWriter bw = new BufferedWriter(new FileWriter(writeToFilePath.toString()))) {
+
+            bw.write("Name\t\t\t\tPersonalNumber\tDate Visited\n");
             for(Visit visit : visitList){
                 bw.write(visit.toString());
             }
+
         } catch (FileNotFoundException e) {
             if(isTestMode){
                 throw new FileNotFoundException();

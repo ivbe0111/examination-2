@@ -39,6 +39,7 @@ class MemberTest {
         memberList.get(6).memberVisitsGym();
         String expected = "Astrid Larsson 540815-4382 Total visits: 2\nHerbert Jansson 060201-4763 Total visits: 1\n";
         assertEquals(expected,member.printTotalVisitsMember());
+        assertNotEquals("",member.printTotalVisitsMember());
     }
 
     @Test
