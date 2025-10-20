@@ -120,6 +120,7 @@ public class FileOperations {
             bw.write("Name\t\t\t\tPersonalNumber\tDate Visited\n");
             for (Visit visit : visitList) {
                 bw.write(visit.toString());
+                bw.newLine();
             }
             bw.newLine();
             bw.write(member.printTotalVisitsMember());

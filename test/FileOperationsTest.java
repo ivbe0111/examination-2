@@ -36,6 +36,7 @@ class FileOperationsTest {
 
     @Test
     void readFromFileAddToMemberListTest()  {
+        //readFromFileAddToMemberList is ran in setUp higher up.
         assertEquals(20, memberList.size());
         assertNotEquals(0, memberList.size());
         Throwable exception = assertThrows(FileNotFoundException.class, () -> fileOperations.readFromFileAddToMemberList(Paths.get("src/.txt")));
@@ -98,10 +99,22 @@ class FileOperationsTest {
 
         fileOperations.writeToFile(filePath);
 
-
+        ArrayList<Visit> visitsTest = visit.getVisits();
+        String expected = "Name\t\t\t\tPersonalNumber\tDate Visited";
+        String line2expected = visitsTest.get(0).toString();
+        String lastLineExpected = visitsTest.getLast().toString();
         try(BufferedReader br = new BufferedReader(new FileReader(filePath.toString()))) {
             String line = br.readLine();
             assertNotNull(line);
+            assertEquals(expected, line);
+            assertNotEquals("Felaktig input", line);
+            String line2 = br.readLine();
+            assertNotNull(line2);
+            assertEquals(line2expected, line2);
+            br.readLine();
+            String lastLine = br.readLine();
+            assertEquals(lastLineExpected, lastLine);
+
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
         }

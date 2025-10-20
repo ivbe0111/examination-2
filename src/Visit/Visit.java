@@ -43,7 +43,7 @@ public class Visit {
         for (int i = memberPersonalNumber.length(); i < 16; i++) {
             sb.append(" ");
         }
-        sb.append(formatVisitTime(visitTime)).append("\n");
+        sb.append(formatVisitTime(visitTime));
 
         return sb.toString();
     }
