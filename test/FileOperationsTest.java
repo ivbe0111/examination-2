@@ -35,10 +35,11 @@ class FileOperationsTest {
     }
 
     @Test
-    void readFromFileAddToMemberListTest() throws FileNotFoundException {
+    void readFromFileAddToMemberListTest()  {
         assertEquals(20, memberList.size());
         assertNotEquals(0, memberList.size());
-        assertThrows(FileNotFoundException.class, () -> fileOperations.readFromFileAddToMemberList(Paths.get("src/.txt")));
+        Throwable exception = assertThrows(FileNotFoundException.class, () -> fileOperations.readFromFileAddToMemberList(Paths.get("src/.txt")));
+        System.out.println(exception.getMessage());
     }
 
     @Test
@@ -100,15 +101,10 @@ class FileOperationsTest {
 
         try(BufferedReader br = new BufferedReader(new FileReader(filePath.toString()))) {
             String line = br.readLine();
-            assertTrue(line != null);
-
+            assertNotNull(line);
         } catch (FileNotFoundException e) {
             throw new RuntimeException(e);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
-
-
     }
 
 

@@ -14,7 +14,7 @@ public class Member {
     private LocalDate latestPayment;
     private MemberType memberType;
     private int numberOfVisits;
-    private static ArrayList<Member> memberList = new ArrayList<>();
+    private final static ArrayList<Member> memberList = new ArrayList<>();
 
     public Member() {
     }
@@ -55,18 +55,8 @@ public class Member {
         }
     }
 
-
-    public Member findMemberByName(String name) {
-        for (Member member : memberList) {
-            if (member.getName().equals(name)) {
-                return member;
-            }
-        }
-        return null;
-    }
-
     public void memberVisitsGym(){
-        Visit visit = new Visit(this.name,this.personalNumber, LocalDateTime.now());
+        new Visit(this.name,this.personalNumber, LocalDateTime.now());
         this.numberOfVisits++;
     }
 
@@ -80,17 +70,7 @@ public class Member {
                         .append(member.getNumberOfVisits()).append("\n");
             }
         }
-
         return sb.toString();
-    }
-
-    public Member findMemberByPersonalNumber(String personalNumber) {
-        for (Member member : memberList) {
-            if (member.getPersonalNumber().equals(personalNumber)) {
-                return member;
-            }
-        }
-        return null;
     }
 
     public String getName() {

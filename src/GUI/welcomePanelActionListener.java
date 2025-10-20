@@ -9,9 +9,9 @@ import java.util.ArrayList;
 
 
 public class welcomePanelActionListener implements ActionListener {
-    private JTextField inputFieldForNameOrPersonalNumber;
+    private final JTextField inputFieldForNameOrPersonalNumber;
 
-    private JLabel memberStatus;
+    private final JLabel memberStatus;
     Member member = new Member();
     private ArrayList<Member> memberList = member.getMemberList();
     public welcomePanelActionListener(

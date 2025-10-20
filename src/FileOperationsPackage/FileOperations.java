@@ -3,6 +3,7 @@ package FileOperationsPackage;
 import MemberPackage.Member;
 import MemberPackage.MemberType;
 import Visit.Visit;
+
 import java.io.*;
 import java.nio.file.Path;
 import java.time.LocalDate;
@@ -14,7 +15,8 @@ public class FileOperations {
     public boolean isTestMode = false;
     Member member = new Member();
 
-    public FileOperations() {}
+    public FileOperations() {
+    }
 
     public void readFromFileAddToMemberList(Path readFromFilePath) throws FileNotFoundException {
         try (BufferedReader br = new BufferedReader(new FileReader(readFromFilePath.toString()))) {
@@ -25,7 +27,7 @@ public class FileOperations {
                     firstLine = false;
                     continue;
                 }
-                Member member = new Member(getNameFromReadLine(line),
+                new Member(getNameFromReadLine(line),
                         getAdressFromReadLine(line),
                         getEmailFromReadLine(line),
                         getPersonalnumberFromReadLine(line),
@@ -35,7 +37,7 @@ public class FileOperations {
             }
         } catch (FileNotFoundException e) {
             if (isTestMode) {
-                throw new FileNotFoundException();
+                throw new FileNotFoundException("File Not Found exception");
             } else {
                 e.printStackTrace();
             }
