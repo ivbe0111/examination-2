@@ -1,3 +1,6 @@
+import FileOperationsPackage.FileOperations;
+import MemberPackage.Member;
+import Visit.Visit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 

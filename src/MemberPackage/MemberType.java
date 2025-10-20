@@ -1,6 +1,8 @@
+package MemberPackage;
+
 public enum MemberType {
     STANDARD("Standard"),
-    GOLD("Gold"),
+    GULD("Guld"),
     PLATINA("Platina");
 
     public String getDescription() {

@@ -1,3 +1,8 @@
+package FileOperationsPackage;
+
+import MemberPackage.Member;
+import MemberPackage.MemberType;
+import Visit.Visit;
 import java.io.*;
 import java.nio.file.Path;
 import java.time.LocalDate;

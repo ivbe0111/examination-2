@@ -1,3 +1,7 @@
+package GUI;
+
+import MemberPackage.*;
+import FileOperationsPackage.*;
 import javax.swing.*;
 import java.awt.*;
 import java.io.FileNotFoundException;
@@ -11,6 +15,7 @@ public class GUI extends JFrame {
     JLabel welcomeLabel2 = new JLabel("Please enter name or personalnumber.");
     JTextField inputFieldForNameOrPersonalNumber = new JTextField(20);
     JLabel memberNotFound = new JLabel("Could not find member with such name or personalnumber.");
+    JLabel memberStatus = new JLabel();
 
     //TODO move this to right spot after
     FileOperations fileOperations = new FileOperations();
@@ -24,24 +29,32 @@ public class GUI extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
+//        addWindowListener(new WindowAdapterClass());
+
 
         //Create textPanel
         add(textPanel);
+        textPanel.setLayout(new GridLayout(5, 1));
         textPanel.setVisible(true);
         textPanel.setPreferredSize(new Dimension(500, 200));
         textPanel.add(welcomeLabel);
         textPanel.add(welcomeLabel2);
         textPanel.add(inputFieldForNameOrPersonalNumber);
         textPanel.add(memberNotFound);
+        textPanel.add(memberStatus);
+        memberNotFound.setForeground(Color.RED);
         memberNotFound.setVisible(false);
+        memberStatus.setVisible(false);
 
         pack();
 
-        welcomePanelActionListener welcomePanelActionListener = new welcomePanelActionListener(memberNotFound, inputFieldForNameOrPersonalNumber, textPanel);
+        welcomePanelActionListener welcomePanelActionListener = new welcomePanelActionListener(memberNotFound, inputFieldForNameOrPersonalNumber, textPanel, memberStatus);
         inputFieldForNameOrPersonalNumber.addActionListener(welcomePanelActionListener);
+
+
+
+
+
     }
 
-    static void main() throws FileNotFoundException {
-        GUI gui = new GUI();
-    }
 }

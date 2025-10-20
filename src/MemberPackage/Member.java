@@ -1,3 +1,5 @@
+package MemberPackage;
+import Visit.Visit;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -31,6 +33,10 @@ public class Member {
         addToMemberListArray();
     }
 
+    public MemberType getMemberType() {
+        return memberType;
+    }
+
     public void addToMemberListArray(){
         memberList.add(this);
     }
@@ -38,14 +44,14 @@ public class Member {
         memberList.clear();
     }
 
-    public String getSubscriptionStatus(Member member) {
+    public Subscriber getSubscriptionStatus(Member member) {
         LocalDate expirationDateForSubscription = LocalDate.now().minusYears(1);
         if (member == null) {
-            return Subscriber.NONEXISTING.getDescription();
+            return Subscriber.NONEXISTING;
         } else if (member.getLatestPayment().isBefore(expirationDateForSubscription)) {
-            return Subscriber.EXPIRED.getDescription();
+            return Subscriber.EXPIRED;
         } else {
-            return Subscriber.ACTIVE.getDescription();
+            return Subscriber.ACTIVE;
         }
     }
 
@@ -60,7 +66,6 @@ public class Member {
     }
 
     public void memberVisitsGym(){
-
         Visit visit = new Visit(this.name,this.personalNumber, LocalDateTime.now());
         this.numberOfVisits++;
     }

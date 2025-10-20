@@ -1,3 +1,6 @@
+import FileOperationsPackage.FileOperations;
+import MemberPackage.Member;
+import MemberPackage.Subscriber;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -61,16 +64,12 @@ class MemberTest {
 
     @Test
     void getSubscriptionStatusTest(){
-        String expiredExpected = "Subscription is expired.";
-        String activeExpected = "Subscription is Active.";
-        String nonExistingExpected = "No current or prior subscription found.";
-
-        assertEquals(expiredExpected, member.getSubscriptionStatus(memberList.getFirst()));
-        assertEquals(activeExpected, member.getSubscriptionStatus(memberList.get(2)));
-        assertEquals(nonExistingExpected, member.getSubscriptionStatus(null));
-        assertNotEquals(nonExistingExpected, member.getSubscriptionStatus(memberList.getFirst()));
-        assertNotEquals(nonExistingExpected, member.getSubscriptionStatus(memberList.get(3)));
-        assertNotEquals(activeExpected, member.getSubscriptionStatus(memberList.getFirst()));
+        assertEquals(Subscriber.EXPIRED, member.getSubscriptionStatus(memberList.getFirst()));
+        assertEquals(Subscriber.ACTIVE, member.getSubscriptionStatus(memberList.get(2)));
+        assertEquals(Subscriber.NONEXISTING, member.getSubscriptionStatus(null));
+        assertNotEquals(Subscriber.NONEXISTING, member.getSubscriptionStatus(memberList.getFirst()));
+        assertNotEquals(Subscriber.NONEXISTING, member.getSubscriptionStatus(memberList.get(3)));
+        assertNotEquals(Subscriber.ACTIVE, member.getSubscriptionStatus(memberList.getFirst()));
     }
 
 }
