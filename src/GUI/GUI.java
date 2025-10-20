@@ -14,22 +14,20 @@ public class GUI extends JFrame {
     JLabel welcomeLabel = new JLabel("Welcome to the best gym ever.");
     JLabel welcomeLabel2 = new JLabel("Please enter name or personalnumber.");
     JTextField inputFieldForNameOrPersonalNumber = new JTextField(20);
-    JLabel memberNotFound = new JLabel("Could not find member with such name or personalnumber.");
     JLabel memberStatus = new JLabel();
 
-    //TODO move this to right spot after
     FileOperations fileOperations = new FileOperations();
 
     public GUI() throws FileNotFoundException {
         Path path = Paths.get("src/Textfiles/gym_medlemmar.txt");
-        fileOperations.readFromFileAddToStringArrayList(path);
+        fileOperations.readFromFileAddToMemberList(path);
 
         //Create Frame
         setSize(500, 200);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
 
-//        addWindowListener(new WindowAdapterClass());
+        addWindowListener(new WindowAdapterClass());
 
 
         //Create textPanel
@@ -38,23 +36,18 @@ public class GUI extends JFrame {
         textPanel.setVisible(true);
         textPanel.setPreferredSize(new Dimension(500, 200));
         textPanel.add(welcomeLabel);
+        welcomeLabel.setHorizontalAlignment(JLabel.CENTER);
         textPanel.add(welcomeLabel2);
+        welcomeLabel2.setHorizontalAlignment(JLabel.CENTER);
         textPanel.add(inputFieldForNameOrPersonalNumber);
-        textPanel.add(memberNotFound);
         textPanel.add(memberStatus);
-        memberNotFound.setForeground(Color.RED);
-        memberNotFound.setVisible(false);
+        memberStatus.setHorizontalAlignment(JLabel.CENTER);
         memberStatus.setVisible(false);
 
         pack();
 
-        welcomePanelActionListener welcomePanelActionListener = new welcomePanelActionListener(memberNotFound, inputFieldForNameOrPersonalNumber, textPanel, memberStatus);
+        welcomePanelActionListener welcomePanelActionListener = new welcomePanelActionListener(inputFieldForNameOrPersonalNumber, memberStatus);
         inputFieldForNameOrPersonalNumber.addActionListener(welcomePanelActionListener);
-
-
-
-
-
     }
 
 }

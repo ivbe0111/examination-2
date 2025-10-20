@@ -22,7 +22,7 @@ public class Visit {
         addVisitToVisitsArrayList();
     }
 
-    public void addVisitToVisitsArrayList(){
+    public void addVisitToVisitsArrayList() {
         visits.add(this);
     }
 
@@ -34,10 +34,16 @@ public class Visit {
 
     @Override
     public String toString() {
-       StringBuilder sb = new StringBuilder();
-                sb.append(memberName).append("\t\t")
-               .append(memberPersonalNumber).append("\t\t")
-               .append(formatVisitTime(visitTime)).append("\n");
+        StringBuilder sb = new StringBuilder();
+        sb.append(memberName);
+        for (int i = memberName.length(); i < 20; i++) {
+            sb.append(" ");
+        }
+        sb.append(memberPersonalNumber);
+        for (int i = memberPersonalNumber.length(); i < 16; i++) {
+            sb.append(" ");
+        }
+        sb.append(formatVisitTime(visitTime)).append("\n");
 
         return sb.toString();
     }
@@ -50,7 +56,7 @@ public class Visit {
         return visits;
     }
 
-    public void clearVisitsArrayList(){
+    public void clearVisitsArrayList() {
         this.visits.clear();
     }
 

@@ -20,7 +20,7 @@ class MemberTest {
     @BeforeEach
     void setUp() throws FileNotFoundException {
         member.clearMemberList();
-        fileOperations.readFromFileAddToStringArrayList(readFromFilePath);
+        fileOperations.readFromFileAddToMemberList(readFromFilePath);
         memberList = member.getMemberList();
     }
 

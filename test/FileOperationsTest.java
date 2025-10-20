@@ -30,61 +30,61 @@ class FileOperationsTest {
     void setUp() throws FileNotFoundException {
         fileOperations.isTestMode = true;
         member.clearMemberList();
-        fileOperations.readFromFileAddToStringArrayList(readFromFilePath);
+        fileOperations.readFromFileAddToMemberList(readFromFilePath);
         memberList = member.getMemberList();
     }
 
     @Test
-    void readFromFileAddToStringArrayListTest() throws FileNotFoundException {
+    void readFromFileAddToMemberListTest() throws FileNotFoundException {
         assertEquals(20, memberList.size());
         assertNotEquals(0, memberList.size());
-        assertThrows(FileNotFoundException.class, () -> fileOperations.readFromFileAddToStringArrayList(Paths.get("src/.txt")));
+        assertThrows(FileNotFoundException.class, () -> fileOperations.readFromFileAddToMemberList(Paths.get("src/.txt")));
     }
 
     @Test
-    void getNameFromStringArrayListTest() {
-        assertEquals("Fredrik Berggren",fileOperations.getNameFromStringArrayList(testLine));
-        assertEquals("Jakob Lundin",fileOperations.getNameFromStringArrayList(lastLine));
-        assertNotEquals("Fredde Berggren",fileOperations.getNameFromStringArrayList(testLine));
+    void getNameFromReadLineTest() {
+        assertEquals("Fredrik Berggren",fileOperations.getNameFromReadLine(testLine));
+        assertEquals("Jakob Lundin",fileOperations.getNameFromReadLine(lastLine));
+        assertNotEquals("Fredde Berggren",fileOperations.getNameFromReadLine(testLine));
     }
 
     @Test
-    void getAdressFromStringArrayListTest() {
-        assertEquals("Skolgränd 8, 16819 Norrköping", fileOperations.getAdressFromStringArrayList(testLine));
-        assertEquals("Backgränd 19, 69618 Sandviken", fileOperations.getAdressFromStringArrayList(lastLine));
+    void getAdressFromReadLineTest() {
+        assertEquals("Skolgränd 8, 16819 Norrköping", fileOperations.getAdressFromReadLine(testLine));
+        assertEquals("Backgränd 19, 69618 Sandviken", fileOperations.getAdressFromReadLine(lastLine));
     }
     @Test
-    void getEmailFromStringArrayListTest() {
-        assertEquals("fredde@fakemail.se", fileOperations.getEmailFromStringArrayList(testLine));
-        assertEquals("jacke@fakemail.com", fileOperations.getEmailFromStringArrayList(lastLine));
-    }
-
-    @Test
-    void getPersonalnumberFromStringArrayListTest() {
-        assertEquals("851020-6728", fileOperations.getPersonalnumberFromStringArrayList(testLine));
-        assertEquals("000718-8949", fileOperations.getPersonalnumberFromStringArrayList(lastLine));
+    void getEmailFromReadLineTest() {
+        assertEquals("fredde@fakemail.se", fileOperations.getEmailFromReadLine(testLine));
+        assertEquals("jacke@fakemail.com", fileOperations.getEmailFromReadLine(lastLine));
     }
 
     @Test
-    void getJoinDateFromStringArrayListTest() {
+    void getPersonalnumberFromReadLineTest() {
+        assertEquals("851020-6728", fileOperations.getPersonalnumberFromReadLine(testLine));
+        assertEquals("000718-8949", fileOperations.getPersonalnumberFromReadLine(lastLine));
+    }
+
+    @Test
+    void getJoinDateFromReadLineTest() {
         LocalDate expectedDateTestLine = LocalDate.of(2019,12,30);
         LocalDate expectedDateLastLine = LocalDate.of(2020,7,10);
 
-        assertEquals(expectedDateTestLine, fileOperations.getJoinDateFromStringArrayList(testLine));
-        assertEquals(expectedDateLastLine, fileOperations.getJoinDateFromStringArrayList(lastLine));
+        assertEquals(expectedDateTestLine, fileOperations.getJoinDateFromReadLine(testLine));
+        assertEquals(expectedDateLastLine, fileOperations.getJoinDateFromReadLine(lastLine));
     }
     @Test
-    void getLastPaymentFromStringArrayListTest() {
+    void getLastPaymentFromReadLineTest() {
         LocalDate expectedDateTestLine = LocalDate.of(2021,12,30);
         LocalDate expectedDateLastLine = LocalDate.of(2022,7,10);
 
-        assertEquals(expectedDateTestLine, fileOperations.getLastPaymentFromStringArrayList(testLine));
-        assertEquals(expectedDateLastLine, fileOperations.getLastPaymentFromStringArrayList(lastLine));
+        assertEquals(expectedDateTestLine, fileOperations.getLastPaymentFromReadLine(testLine));
+        assertEquals(expectedDateLastLine, fileOperations.getLastPaymentFromReadLine(lastLine));
     }
     @Test
-    void getMemberTypeFromStringArrayListTest() {
-        assertEquals(MemberType.PLATINA, fileOperations.getMemberTypeFromStringArrayList(testLine));
-        assertEquals(MemberType.STANDARD, fileOperations.getMemberTypeFromStringArrayList(lastLine));
+    void getMemberTypeFromReadLineTest() {
+        assertEquals(MemberType.PLATINA, fileOperations.getMemberTypeFromReadLine(testLine));
+        assertEquals(MemberType.STANDARD, fileOperations.getMemberTypeFromReadLine(lastLine));
     }
 
     @Test
