@@ -17,7 +17,6 @@ public class Main {
         Path serializeFile = Paths.get("VisitArray.ser");
 
         if(Files.exists(serializeFile)){
-            IO.println("Serialize file exists");
             serialize.deSerializeToVisitArrayList();
         }
         fileOperations.readFromFileAddToMemberList(path);

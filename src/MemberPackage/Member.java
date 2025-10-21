@@ -15,6 +15,7 @@ public class Member {
     private MemberType memberType;
     private int numberOfVisits;
     private final static ArrayList<Member> memberList = new ArrayList<>();
+    Visit visit = new Visit();
 
     public Member() {
     }
@@ -29,7 +30,7 @@ public class Member {
         this.joinDate = joinDate;
         this.latestPayment = latestPayment;
         this.memberType = memberType;
-        this.numberOfVisits = 0;
+        this.numberOfVisits = visit.getTotalVisitsPerMember(this.personalNumber);
         addToMemberListArray();
     }
 

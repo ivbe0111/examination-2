@@ -33,6 +33,16 @@ public class Visit implements Serializable {
         return visitTime.format(formatter);
     }
 
+    public int getTotalVisitsPerMember(String memberPersonalNumberInput){
+        int totalVisits = 0;
+        for(Visit visit : visits){
+            if(visit.getMemberPersonalNumber().equals(memberPersonalNumberInput)){
+                totalVisits++;
+            }
+        }
+        return totalVisits;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();

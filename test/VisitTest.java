@@ -38,6 +38,21 @@ class VisitTest {
     }
 
     @Test
+    void getTotalVisitsPerMemberTest(){
+        visit.clearVisitsArrayList();
+        memberList.get(1).memberVisitsGym();
+        memberList.get(6).memberVisitsGym();
+        memberList.get(1).memberVisitsGym();
+
+        assertEquals(memberList.get(1).getNumberOfVisits(),
+                visit.getTotalVisitsPerMember(memberList.get(1).getPersonalNumber()));
+        assertEquals(memberList.get(6).getNumberOfVisits(),
+                visit.getTotalVisitsPerMember(memberList.get(6).getPersonalNumber()));
+        assertNotEquals(0,
+                visit.getTotalVisitsPerMember(memberList.get(1).getPersonalNumber()));
+    }
+
+    @Test
     void addVisitToVisitsArrayListTest() {
         visit.clearVisitsArrayList();
         memberList.get(1).memberVisitsGym();
