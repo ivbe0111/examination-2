@@ -1,18 +1,18 @@
 <h1>Gym Check-in System<h1></h1>
 
 <h3>Description<h3></h3>
+   
 A gym had problem with their systems, but an employee had a list of members saved to a file. <br>
 We were tasked with creating a check in system so that only Active member (There is expired members on the list also) will be allowed to enter the gym. <br>
 The second task was to record all visit so that the personal trainer could get his own list written to a file with members that visits the gym.<br>
 
 <h3>Installation<h3></h3>
-Follow these steps to set up the project in IntelliJ IDEA:<br>
-**Prerequisites:**<br>
-* IntelliJ IDEA (Community or Ultimate Edition)<br>
-* Java Development Kit (JDK) 8 or higher (developed and tested with JDK 25)<br>
-* Git <br>
-
-
+   
+   Follow these steps to set up the project in IntelliJ IDEA:<br>
+   **Prerequisites:**<br>
+   * IntelliJ IDEA (Community or Ultimate Edition)<br>
+   * Java Development Kit (JDK) 8 or higher (developed and tested with JDK 25)<br>
+   * Git <br>
 1) **Clone the repository:**<br>
    ```bash
    git clone https://github.com/ivbe0111/examination-2.git
@@ -29,6 +29,7 @@ Alternatively, download the project as a ZIP file from GitHub and extract it.<br
 * IntelliJ should automatically compile the project. If not, click `Build -> Build Project`.<br>
 
 <h3>Testing<h3></h3>
+   
 Project was developed using `Test-Driven Development(TDD)` to ensure code reliability.<br>
 The test folder `test` includes unit tests for functionality as member check-in, data validation and tracking. <br>
 Tests are written using JUnit5.<br>
@@ -40,7 +41,7 @@ Tests are written using JUnit5.<br>
 <h3>Usage<h3></h3>
 Run the program in IntelliJ IDEA.<br>
 1) Locate the main class (`Main.java`) in the project explorer.<br>
-2) Right-click the file and select `Run 'Main.main()'`<br>
+2) Right-click the file and select `Run 'Main.main()'`<br><br>
 
 **Example Usage:**<br>
 Enter a members personalnumber or name. <br>
