@@ -36,7 +36,7 @@ public class welcomePanelActionListener implements ActionListener {
                     member.memberVisitsGym();
                     return;
                 } else if (memberStatusEnum.equals(Subscriber.EXPIRED)) {
-                    memberStatus.setForeground(Color.BLACK);
+                    memberStatus.setForeground(Color.RED);
                     memberStatus.setText(Subscriber.EXPIRED.getDescription() + "for " + member.getName());
                     memberStatus.setVisible(true);
                     return;
