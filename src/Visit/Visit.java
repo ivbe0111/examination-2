@@ -16,8 +16,6 @@ public class Visit implements Serializable {
     public Visit() {
     }
 
-
-
     public Visit(String memberName, String memberPersonalNumber, LocalDateTime visitTime) {
         this.memberName = memberName;
         this.memberPersonalNumber = memberPersonalNumber;

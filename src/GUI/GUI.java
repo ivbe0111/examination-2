@@ -2,6 +2,8 @@ package GUI;
 
 import MemberPackage.*;
 import FileOperationsPackage.*;
+import SerializePackage.SerializeClass;
+
 import javax.swing.*;
 import java.awt.*;
 import java.io.FileNotFoundException;
@@ -16,11 +18,8 @@ public class GUI extends JFrame {
     JTextField inputFieldForNameOrPersonalNumber = new JTextField(20);
     JLabel memberStatus = new JLabel();
 
-    FileOperations fileOperations = new FileOperations();
-
     public GUI() throws FileNotFoundException {
-        Path path = Paths.get("src/Textfiles/gym_medlemmar.txt");
-        fileOperations.readFromFileAddToMemberList(path);
+
 
         //Create Frame
         setSize(500, 200);

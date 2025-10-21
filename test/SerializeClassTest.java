@@ -27,6 +27,7 @@ class SerializeClassTest {
         member.clearMemberList();
         fileOperations.readFromFileAddToMemberList(readFromFilePath);
         memberList = member.getMemberList();
+        serialize.isTestMode = true;
     }
 
     @Test
