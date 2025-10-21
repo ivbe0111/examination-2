@@ -1,6 +1,8 @@
 package GUI;
+
 import MemberPackage.Member;
 import MemberPackage.Subscriber;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -14,9 +16,10 @@ public class welcomePanelActionListener implements ActionListener {
     private final JLabel memberStatus;
     Member member = new Member();
     private ArrayList<Member> memberList = member.getMemberList();
+
     public welcomePanelActionListener(
-                                      JTextField inputFieldForNameOrPersonalNumber,
-                                      JLabel memberStatus) {
+            JTextField inputFieldForNameOrPersonalNumber,
+            JLabel memberStatus) {
         this.inputFieldForNameOrPersonalNumber = inputFieldForNameOrPersonalNumber;
         this.memberStatus = memberStatus;
     }

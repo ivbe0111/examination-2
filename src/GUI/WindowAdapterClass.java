@@ -10,11 +10,11 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class WindowAdapterClass extends WindowAdapter {
+    FileOperations fileOperations = new FileOperations();
+    Path filePath = Paths.get("src/Textfiles/PT-file.txt");
+    SerializeClass serialize = new SerializeClass();
 
     public void windowClosing(WindowEvent e) {
-        FileOperations fileOperations = new FileOperations();
-        Path filePath = Paths.get("src/Textfiles/PT-file.txt");
-        SerializeClass serialize = new SerializeClass();
         try {
             fileOperations.writeToFile(filePath);
             serialize.serializeVisitArrayList();
