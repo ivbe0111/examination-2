@@ -1,11 +1,11 @@
-**Gym Check-in System**<br>
+<h1>Gym Check-in System<h1></h1>
 
-**Description**<br>
+<h3>Description<h3></h3>
 A gym had problem with their systems, but an employee had a list of members saved to a file. <br>
 We were tasked with creating a check in system so that only Active member (There is expired members on the list also) will be allowed to enter the gym. <br>
 The second task was to record all visit so that the personal trainer could get his own list written to a file with members that visits the gym.<br>
 
-**Installation**<br>
+<h3>Installation<h3></h3>
 Follow these steps to set up the project in IntelliJ IDEA:<br>
 **Prerequisites:**<br>
 * IntelliJ IDEA (Community or Ultimate Edition)<br>
@@ -28,7 +28,16 @@ Alternatively, download the project as a ZIP file from GitHub and extract it.<br
 4) **Build the project**<br>
 * IntelliJ should automatically compile the project. If not, click `Build -> Build Project`.<br>
 
-**Usage**<br>
+<h3>Testing<h3></h3>
+Project was developed using `Test-Driven Development(TDD)` to ensure code reliability.<br>
+The test folder `test` includes unit tests for functionality as member check-in, data validation and tracking. <br>
+Tests are written using JUnit5.<br>
+
+**Running Tests in IntelliJ**<br>
+1) Locate the test folder (`test`) in the project explorer.<br>
+2) Right-click the folder and select `Run 'All Tests' to execute all tests.<br>
+
+<h3>Usage<h3></h3>
 Run the program in IntelliJ IDEA.<br>
 1) Locate the main class (`Main.java`) in the project explorer.<br>
 2) Right-click the file and select `Run 'Main.main()'`<br>
@@ -39,7 +48,7 @@ If the member is an active member (Time of his last payment is less that 1 year 
 If the entered name or personal number doesn't exist or the member hasn't payed in the last year, user will be prompted with a red message telling the user that member is either expired or doesn't exist.<br>
 Upon closing the program all visits will be written to a file named `PT-File.txt` which will be either created or rewritten in `src/Textfiles`.<br>
 
-**Contact**
+<h3>Contact<h3></h3>
 For questions or feedback feel free to contact me at:<br>
 Email: berezkinivan94@gmail.com<br>
 GitHub: ivbe0111<br>
