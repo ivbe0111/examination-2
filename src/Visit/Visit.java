@@ -1,10 +1,11 @@
 package Visit;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
-public class Visit {
+public class Visit implements Serializable {
 
     private String memberName;
     private String memberPersonalNumber;
@@ -14,6 +15,8 @@ public class Visit {
 
     public Visit() {
     }
+
+
 
     public Visit(String memberName, String memberPersonalNumber, LocalDateTime visitTime) {
         this.memberName = memberName;
@@ -46,6 +49,9 @@ public class Visit {
         sb.append(formatVisitTime(visitTime));
 
         return sb.toString();
+    }
+    public String getMemberPersonalNumber() {
+        return memberPersonalNumber;
     }
 
     public String getMemberName() {
