@@ -12,10 +12,12 @@ Follow these steps to set up the project in IntelliJ IDEA:<br>
 * Java Development Kit (JDK) 8 or higher (developed and tested with JDK 25)<br>
 * Git <br>
 
+
 1) **Clone the repository:**<br>
    ```bash
-   git clone https://github.com/ivbe0111/examination-2.git```
-   Alternatively, download the project as a ZIP file from GitHub and extract it.<br>
+   git clone https://github.com/ivbe0111/examination-2.git
+   
+Alternatively, download the project as a ZIP file from GitHub and extract it.<br>
 2) **Open the project in IntelliJ:**<br>
 * Launch IntelliJ Idea<br>
 * Select `File -> Open` and navigate to examination-2 folder.<br>
