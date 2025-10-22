@@ -23,6 +23,7 @@ class VisitTest {
     @BeforeEach
     void setUp() throws FileNotFoundException {
         member.clearMemberList();
+        visit.clearVisitsArrayList();
         fileOperations.readFromFileAddToMemberList(readFromFilePath);
         memberList = member.getMemberList();
     }

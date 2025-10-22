@@ -88,10 +88,10 @@ class FileOperationsTest {
         assertEquals(MemberType.PLATINA, fileOperations.getMemberTypeFromReadLine(testLine));
         assertEquals(MemberType.STANDARD, fileOperations.getMemberTypeFromReadLine(lastLine));
     }
-
+///  HGEHE
     @Test
     void writeToFileTest() throws IOException {
-        Path filePath = Paths.get("src/Textfiles/PT-file.txt");
+        Path filePath = Paths.get("src/Textfiles/PT-filetest.txt");
         visit.clearVisitsArrayList();
         memberList.get(1).memberVisitsGym();
         memberList.get(6).memberVisitsGym();

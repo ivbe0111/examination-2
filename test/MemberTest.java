@@ -1,6 +1,7 @@
 import FileOperationsPackage.FileOperations;
 import MemberPackage.Member;
 import MemberPackage.Subscriber;
+import Visit.Visit;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,10 +17,12 @@ class MemberTest {
     FileOperations fileOperations = new FileOperations();
     Member member = new Member();
     ArrayList<Member> memberList;
+    Visit visit = new Visit();
 
     @BeforeEach
     void setUp() throws FileNotFoundException {
         member.clearMemberList();
+        visit.clearVisitsArrayList();
         fileOperations.readFromFileAddToMemberList(readFromFilePath);
         memberList = member.getMemberList();
     }

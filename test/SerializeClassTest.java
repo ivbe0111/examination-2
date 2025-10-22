@@ -49,11 +49,13 @@ class SerializeClassTest {
         serialize.deSerializeToVisitArrayList();
         visitsArrayList = visit.getVisits();
 
+
         assertEquals(3, visitsArrayList.size());
         assertNotEquals(0, visitsArrayList.size());
         assertEquals(visitsArrayList.getFirst().getMemberName(), memberList.get(1).getName());
         assertEquals(visitsArrayList.getLast().getMemberPersonalNumber(), memberList.get(1).getPersonalNumber());
 
+        visit.clearVisitsArrayList();
     }
 
 }
