@@ -39,6 +39,7 @@ Tests are written using JUnit5.<br>
 2) Right-click the folder and select `Run 'All Tests' to execute all tests.<br>
 
 <h3>Usage<h3></h3>
+
 Run the program in IntelliJ IDEA.<br>
 1) Locate the main class (`Main.java`) in the project explorer.<br>
 2) Right-click the file and select `Run 'Main.main()'`<br><br>
